@@ -268,6 +268,8 @@ BEGIN
     IDS_MUI_MENU_THEMES     "&Scheme Collection"
     IDM_THEMES_FACTORY_RESET "&Factory Reset"
     IDM_THEMES_STD_CFG       "&Standard Config"
+    IDS_MUI_MENU_PLUGINS     "&Plugins"
+    IDM_PLUGINS_MANAGE       "&Plugin Manager..."
     IDS_MUI_STATUSBAR_PREFIXES "Ln  ,Col  ,Sel  ,Sb  ,SLn  ,Occ  ,,,,,,,Ch  ,Repl  ,Eval  ,U+,"
     IDS_MUI_STATUSBAR_POSTFIXES ",,,,,,,,,,,,,,,,"
     IDS_CLEAR_ALL           "Clear All"

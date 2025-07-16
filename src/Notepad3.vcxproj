@@ -521,6 +521,7 @@
     </ClCompile>
     <ClCompile Include="Helpers.c" />
     <ClCompile Include="MuiLanguage.c" />
+    <ClCompile Include="Plugins.c" />
     <ClCompile Include="Notepad3.c" />
     <ClCompile Include="Print.cpp" />
     <ClCompile Include="Resample.c" />
@@ -636,6 +637,7 @@
     <ClInclude Include="Styles.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="TypeDefs.h" />
+    <ClInclude Include="Plugins.h" />
     <ClInclude Include="Version.h" />
     <ClInclude Include="VersionEx.h" />
     <ClInclude Include="win\dlgs.h" />
