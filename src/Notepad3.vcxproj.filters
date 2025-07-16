@@ -207,6 +207,9 @@
     <ClCompile Include="MuiLanguage.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Plugins.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="EncodingDetection.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -462,6 +465,9 @@
       <Filter>Resource Files</Filter>
     </ClInclude>
     <ClInclude Include="TypeDefs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Plugins.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Encoding.h">

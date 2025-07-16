@@ -588,7 +588,10 @@
 #define IDS_MUI_MENU_THEMES             37000
 #define IDM_THEMES_FACTORY_RESET        37001
 #define IDM_THEMES_STD_CFG              37002
-/// !!! dont use IDs until           ...37100
+#define IDS_MUI_MENU_PLUGINS            37100
+#define IDM_PLUGINS_MANAGE              37101
+#define IDM_PLUGINS_FIRST               37102
+/// !!! dont use IDs until           ...37200
 
 #define IDM_FILE_NEW                    40000
 #define IDM_FILE_OPEN                   40001
