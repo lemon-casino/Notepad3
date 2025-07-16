@@ -13,17 +13,31 @@ jobs:
         platform: [Win32, x64]
     steps:
     - uses: actions/checkout@v3
+
+    - name: Cache NuGet packages
+      uses: actions/cache@v4
+      with:
+        path: ~\.nuget\packages
+        key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
+        restore-keys: |
+          ${{ runner.os }}-nuget-
+
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1.1
+
     - name: Restore NuGet packages
-      run: nuget restore Notepad3.sln
+      run: nuget restore Notepad3.sln --disable-parallel
+      timeout-minutes: 30
+
     - name: Generate version files
       shell: pwsh
       run: ./Version.ps1
+
     - name: Build
       run: msbuild Notepad3.sln /p:Configuration=Release /p:Platform=${{ matrix.platform }} /m
+
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
         name: Notepad3-${{ matrix.platform }}
-        path: Bin\**\*.exe
+        path: Bin\${{ matrix.platform }}\Release\*.exe
