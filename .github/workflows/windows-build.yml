@@ -17,6 +17,9 @@ jobs:
       uses: microsoft/setup-msbuild@v1.1
     - name: Restore NuGet packages
       run: nuget restore Notepad3.sln
+    - name: Generate version files
+      shell: pwsh
+      run: ./Version.ps1
     - name: Build
       run: msbuild Notepad3.sln /p:Configuration=Release /p:Platform=${{ matrix.platform }} /m
     - name: Upload artifact

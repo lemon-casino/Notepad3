@@ -1,4 +1,5 @@
 #include "Helpers.h"
+#include <shellapi.h>
 #include "Plugins.h"
 
 #define MAX_PLUGINS 32
