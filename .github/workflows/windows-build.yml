@@ -1,0 +1,26 @@
+name: Windows Build
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        platform: [Win32, x64]
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1.1
+    - name: Restore NuGet packages
+      run: nuget restore Notepad3.sln
+    - name: Build
+      run: msbuild Notepad3.sln /p:Configuration=Release /p:Platform=${{ matrix.platform }} /m
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: Notepad3-${{ matrix.platform }}
+        path: Bin\**\*.exe
