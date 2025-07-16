@@ -20,7 +20,7 @@ jobs:
     - name: Build
       run: msbuild Notepad3.sln /p:Configuration=Release /p:Platform=${{ matrix.platform }} /m
     - name: Upload artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: Notepad3-${{ matrix.platform }}
         path: Bin\**\*.exe
