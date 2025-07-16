@@ -1,6 +1,7 @@
 # Notepad3
 
 [![Build status](https://img.shields.io/appveyor/ci/rizonesoft/notepad3/master.svg)](https://ci.appveyor.com/project/rizonesoft/notepad3/branch/master)
+[![Windows Build](https://github.com/rizonesoft/Notepad3/actions/workflows/windows-build.yml/badge.svg)](https://github.com/rizonesoft/Notepad3/actions/workflows/windows-build.yml)
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 [![](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.com/donate/?hosted_button_id=7UGGCSDUZJPFE)
 
@@ -18,6 +19,13 @@ Notepad3 is a fast and light-weight Scintilla-based text editor with syntax high
 
 * **[GET IN TOUCH](https://rizonesoft.com/contact-us)**
 * **Premium Support** - On Rizonesoft, support is free and we will assist you the best we can. Please be patient when contacting us; there are mainly volunteers working on Rizonesoft projects, and time is a precious commodity.
+
+## Building on GitHub Actions
+
+This repository includes a workflow that compiles Notepad3 on Windows runners. The
+workflow file is located at `.github/workflows/windows-build.yml` and is triggered
+for pushes and pull requests. It builds both 32-bit and 64-bit binaries and uploads
+the resulting executables as workflow artifacts.
 
 ## Changes compared to Flo's official [Notepad2](https://www.flos-freeware.ch/notepad2.html) (made in [Notepad2-mod](https://xhmikosr.github.io/notepad2-mod/)):
 

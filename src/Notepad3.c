@@ -50,6 +50,7 @@
 #include "Config/Config.h"
 #include "DarkMode/DarkMode.h"
 #include "StyleLexers/EditLexer.h"
+#include "Plugins.h"
 
 #if (defined(_DEBUG) || defined(DEBUG)) && !defined(NDEBUG)
 #if defined(WIN32) && !defined(_WIN64)
@@ -1013,6 +1014,7 @@ static void _CleanUpResources(const HWND hwnd, bool bIsInitialized)
 
     StrgDestroy(s_hstrCurrentFindPattern);
     ThemesItems_Release();
+    Plugins_Release();
 
     Path_Release(s_hpthRelaunchElevatedFile);
 
@@ -1350,6 +1352,8 @@ int WINAPI wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, 
         InsertLanguageMenu(Globals.hMainMenu);
     #endif
     Style_InsertThemesMenu(Globals.hMainMenu);
+    Plugins_Init();
+    Plugins_InsertMenu(Globals.hMainMenu);
 
     if (!InitApplication(Globals.hInstance)) {
         _CleanUpResources(NULL, false);
@@ -4701,6 +4705,7 @@ LRESULT MsgCommand(HWND hwnd, UINT umsg, WPARAM wParam, LPARAM lParam)
     if (bIsLngMenuCmd) {
         DynamicLanguageMenuCmd(iLoWParam);
         Style_InsertThemesMenu(Globals.hMainMenu);
+        Plugins_InsertMenu(Globals.hMainMenu);
         DrawMenuBar(Globals.hwndMain);
         UpdateToolbar();
         return FALSE;
@@ -4708,6 +4713,9 @@ LRESULT MsgCommand(HWND hwnd, UINT umsg, WPARAM wParam, LPARAM lParam)
     #endif
 
     bool const bIsThemesMenuCmd = ((iLoWParam >= IDM_THEMES_FACTORY_RESET) && (iLoWParam < (int)(IDM_THEMES_FACTORY_RESET + ThemeItems_CountOf())));
+    if (Plugins_Command(iLoWParam)) {
+        return FALSE;
+    }
     if (bIsThemesMenuCmd) {
         if (iLoWParam == IDM_THEMES_FACTORY_RESET) {
             if (!IsYesOkay(InfoBoxLng(MB_OKCANCEL | MB_ICONWARNING, L"MsgResetScheme", IDS_MUI_WARN_STYLE_RESET))) {
